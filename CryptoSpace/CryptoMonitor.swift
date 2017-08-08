@@ -8,8 +8,18 @@
 
 import Foundation
 
+enum CryptoCurrency: String {
+    case BTC = "1"
+    case ETH = "21"
+    case DAS = "22"
+    case REP = "23"
+    case GNO = "24"
+    case OMG = "26"
+}
+
 class CryptoMonitor: NSObject {
     let statusItemView: StatusItemView
+    let currency = CryptoCurrency.OMG
 
     init(statusItemView view: StatusItemView) {
         statusItemView = view
