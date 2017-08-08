@@ -42,24 +42,22 @@ class CryptoMonitor: NSObject {
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.allHTTPHeaderFields = ["cache-control": "no-cache"]
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if (response as! HTTPURLResponse).statusCode == 200 {
-                let json = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
-
-                guard let omgJSON = json["26"] as? [String: Any],
-                    let orderbookJSON = omgJSON["orderbook"] as? [String: Any],
-                    let bidsJSON = orderbookJSON["bids"] as? [String: Any],
-                    let bid = bidsJSON["highbid"] as? Double
-                else {
-                    return
-                }
-                self.handleData(bid)
-            } else {
-                if let error = error {
-                    print(error)
-                } else {
-                    // no error
-                }
+            guard error == nil else {
+                print(error.debugDescription)
+                return
             }
+            guard (response as! HTTPURLResponse).statusCode == 200 else { return }
+
+            let json = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
+
+            guard let currencyJSON = json[self.currency.rawValue] as? [String: Any],
+                let orderbookJSON = currencyJSON["orderbook"] as? [String: Any],
+                let bidsJSON = orderbookJSON["bids"] as? [String: Any],
+                let bid = bidsJSON["highbid"] as? Double
+            else {
+                return
+            }
+            self.handleData(bid)
         }.resume()
     }
 
