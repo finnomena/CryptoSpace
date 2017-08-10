@@ -23,6 +23,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         CryptoMonitor(statusItemView: statusItemView).start()
+        if !AutoLaunchHelper.isLaunchWhenLogin() {
+            AutoLaunchHelper.addToLoginItems()
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

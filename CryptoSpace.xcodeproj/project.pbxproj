@@ -14,6 +14,7 @@
 		7B2BB4C71F345F2800DD3EAC /* CryptoMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2BB4C61F345F2800DD3EAC /* CryptoMonitor.swift */; };
 		7B2BB4C91F345FC100DD3EAC /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2BB4C81F345FC100DD3EAC /* StatusItemView.swift */; };
 		7B2BB4CB1F345FE200DD3EAC /* SystemThemeChangeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2BB4CA1F345FE200DD3EAC /* SystemThemeChangeHelper.swift */; };
+		7B526C411F3C1AD0007BB9A9 /* AutoLaunchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B526C401F3C1AD0007BB9A9 /* AutoLaunchHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7B2BB4C61F345F2800DD3EAC /* CryptoMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoMonitor.swift; sourceTree = "<group>"; };
 		7B2BB4C81F345FC100DD3EAC /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		7B2BB4CA1F345FE200DD3EAC /* SystemThemeChangeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemThemeChangeHelper.swift; sourceTree = "<group>"; };
+		7B526C401F3C1AD0007BB9A9 /* AutoLaunchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLaunchHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				7B2BB4C61F345F2800DD3EAC /* CryptoMonitor.swift */,
 				7B2BB4C81F345FC100DD3EAC /* StatusItemView.swift */,
 				7B2BB4CA1F345FE200DD3EAC /* SystemThemeChangeHelper.swift */,
+				7B526C401F3C1AD0007BB9A9 /* AutoLaunchHelper.swift */,
 				7B2BB4B91F345E9400DD3EAC /* ViewController.swift */,
 				7B2BB4BB1F345E9400DD3EAC /* Assets.xcassets */,
 				7B2BB4BD1F345E9400DD3EAC /* Main.storyboard */,
@@ -147,6 +150,7 @@
 				7B2BB4C91F345FC100DD3EAC /* StatusItemView.swift in Sources */,
 				7B2BB4C71F345F2800DD3EAC /* CryptoMonitor.swift in Sources */,
 				7B2BB4B81F345E9400DD3EAC /* AppDelegate.swift in Sources */,
+				7B526C411F3C1AD0007BB9A9 /* AutoLaunchHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
