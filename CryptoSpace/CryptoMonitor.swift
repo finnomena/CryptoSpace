@@ -48,16 +48,19 @@ class CryptoMonitor: NSObject {
             }
             guard (response as! HTTPURLResponse).statusCode == 200 else { return }
 
-            let json = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
-
-            guard let currencyJSON = json[self.currency.rawValue] as? [String: Any],
-                let orderbookJSON = currencyJSON["orderbook"] as? [String: Any],
-                let bidsJSON = orderbookJSON["bids"] as? [String: Any],
-                let bid = bidsJSON["highbid"] as? Double
-            else {
-                return
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] else { return }
+                guard let currencyJSON = json[self.currency.rawValue] as? [String: Any],
+                    let orderbookJSON = currencyJSON["orderbook"] as? [String: Any],
+                    let bidsJSON = orderbookJSON["bids"] as? [String: Any],
+                    let bid = bidsJSON["highbid"] as? Double
+                    else {
+                        return
+                }
+                self.handleData(bid)
+            } catch {
+                print("BX Unavailable")
             }
-            self.handleData(bid)
         }.resume()
     }
 
