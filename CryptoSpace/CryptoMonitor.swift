@@ -9,17 +9,32 @@
 import Foundation
 
 enum CryptoCurrency: String {
-    case BTC = "1"
-    case ETH = "21"
-    case DAS = "22"
-    case REP = "23"
-    case GNO = "24"
-    case OMG = "26"
+    case BTC
+    case ETH
+    case DAS
+    case REP
+    case GNO
+    case OMG
+
+    var key: String {
+        switch self {
+        case .BTC: return "1"
+        case .ETH: return "21"
+        case .DAS: return "22"
+        case .REP: return "23"
+        case .GNO: return "24"
+        case .OMG: return "26"
+        }
+    }
 }
 
 class CryptoMonitor: NSObject {
     let statusItemView: StatusItemView
-    let currency = CryptoCurrency.OMG
+    var currency = CryptoCurrency.BTC {
+        didSet {
+            statusItemView.currency = currency
+        }
+    }
 
     init(statusItemView view: StatusItemView) {
         statusItemView = view
@@ -50,7 +65,7 @@ class CryptoMonitor: NSObject {
 
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] else { return }
-                guard let currencyJSON = json[self.currency.rawValue] as? [String: Any],
+                guard let currencyJSON = json[self.currency.key] as? [String: Any],
                     let orderbookJSON = currencyJSON["orderbook"] as? [String: Any],
                     let bidsJSON = orderbookJSON["bids"] as? [String: Any],
                     let bid = bidsJSON["highbid"] as? Double
